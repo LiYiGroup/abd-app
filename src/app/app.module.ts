@@ -10,6 +10,8 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { AppSiderComponent } from './components/app-sider/app-sider.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DemoFormComponent } from './components/demo-form/demo-form.component';
 
 registerLocaleData(zh);
 
@@ -17,14 +19,16 @@ registerLocaleData(zh);
   declarations: [
     AppComponent,
     AppSiderComponent,
-    HeaderComponent
+    HeaderComponent,
+    DemoFormComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    AppRoutingModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
