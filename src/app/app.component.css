@@ -1,0 +1,19 @@
+.abd-header {
+    background: #fff;
+    height: 48px;
+}
+
+.abd-content {
+    margin: 24px 16px 0;
+    height: 100%;
+}
+
+.abd-content-inner {
+    padding: 24px;
+    background: #fff;
+    height: 100%;
+}
+
+.abd-footer {
+    text-align: center;
+}
