@@ -11,6 +11,7 @@ import zh from '@angular/common/locales/zh';
 import { AppSiderComponent } from './components/app-sider/app-sider.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
 import { DemoFormComponent } from './components/demo-form/demo-form.component';
 
 registerLocaleData(zh);
@@ -28,7 +29,8 @@ registerLocaleData(zh);
     FormsModule,
     HttpClientModule,
     NgZorroAntdModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DynamicFormModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
