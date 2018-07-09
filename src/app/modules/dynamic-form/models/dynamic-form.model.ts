@@ -11,6 +11,9 @@ export class FormConfig {
 }
 
 export const dfControlType = {
-    textbox: 'textbox'
+    textbox: 'textbox',
+    selection: 'selection',
+    textarea: 'textarea',
+    datepicker: 'datepicker'
 };
 
