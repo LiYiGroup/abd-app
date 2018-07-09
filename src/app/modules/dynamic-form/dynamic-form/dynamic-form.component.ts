@@ -12,18 +12,15 @@ export class DynamicFormComponent implements OnInit {
   formGroup: FormGroup;
 
   @Input() formConfig: FormConfig = {
-    columns: 2,
+    columns: 4,
     fields:
       [
-        { key: 'username1', label: 'username', value: null, controlType: dfControlType.textbox },
-        { key: 'username2', label: 'username', value: null, controlType: dfControlType.textbox },
-        { key: 'username3', label: 'username', value: null, controlType: dfControlType.textbox },
-        { key: 'username4', label: 'username', value: null, controlType: dfControlType.textbox },
-        { key: 'username5', label: 'username', value: null, controlType: dfControlType.textbox },
-        { key: 'username6', label: 'username', value: null, controlType: dfControlType.textbox },
-        { key: 'username7', label: 'username', value: null, controlType: dfControlType.textbox },
-        { key: 'username8', label: 'username', value: null, controlType: dfControlType.textbox },
-        { key: 'username9', label: 'username', value: null, controlType: dfControlType.textbox }
+        { key: 'bumpName', label: '泵名称', value: null, controlType: dfControlType.textbox },
+        { key: 'bumpType', label: '型号', value: null, controlType: dfControlType.textbox },
+        { key: 'bumpFlow', label: '流量', value: null, controlType: dfControlType.textbox },
+        { key: 'bumpLift', label: '扬程', value: null, controlType: dfControlType.textbox },
+        { key: 'bumpMaterial', label: '材质', value: null, controlType: dfControlType.textbox },
+        { key: 'bumpSeal', label: '机封', value: null, controlType: dfControlType.textbox }
       ]
   };
 

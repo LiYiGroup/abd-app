@@ -12,7 +12,7 @@ import { AppSiderComponent } from './components/app-sider/app-sider.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
-import { DemoFormComponent } from './components/demo-form/demo-form.component';
+import { SearchFormComponent } from './components/search-form/search-form.component';
 
 registerLocaleData(zh);
 
@@ -21,7 +21,7 @@ registerLocaleData(zh);
     AppComponent,
     AppSiderComponent,
     HeaderComponent,
-    DemoFormComponent
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,

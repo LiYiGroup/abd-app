@@ -7,7 +7,7 @@ import { FieldItem } from '../models/dynamic-form.model';
   styleUrls: ['./dynamic-form-element.component.css']
 })
 export class DynamicFormElementComponent implements OnInit {
-  @Input() model: FieldItem;
+  @Input() everyFeild: FieldItem;
 
   constructor() { }
 
