@@ -22,7 +22,6 @@ export class TextboxFieldItem extends FieldItem {
 export const dfControlType = {
     textbox: 'textbox',
     selection: 'selection',
-    textarea: 'textarea',
     datepicker: 'datepicker'
 };
 
