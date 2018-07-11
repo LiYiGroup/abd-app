@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-sider.component.css']
 })
 export class AppSiderComponent implements OnInit {
-  
+
   constructor() { }
 
   ngOnInit() {

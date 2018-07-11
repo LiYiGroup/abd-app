@@ -11,18 +11,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class DynamicFormComponent implements OnInit {
   formGroup: FormGroup;
 
-  @Input() formConfig: FormConfig = {
-    columns: 4,
-    fields:
-      [
-        { key: 'bumpName', label: '泵名称', value: null, controlType: dfControlType.textbox },
-        { key: 'bumpType', label: '型号', value: null, controlType: dfControlType.textbox },
-        { key: 'bumpFlow', label: '流量', value: null, controlType: dfControlType.textbox },
-        { key: 'bumpLift', label: '扬程', value: null, controlType: dfControlType.textbox },
-        { key: 'bumpMaterial', label: '材质', value: null, controlType: dfControlType.textbox },
-        { key: 'bumpSeal', label: '机封', value: null, controlType: dfControlType.textbox }
-      ]
-  };
+  @Input() formConfig: FormConfig;
 
   constructor(private formBuilder: FormBuilder) { }
 
