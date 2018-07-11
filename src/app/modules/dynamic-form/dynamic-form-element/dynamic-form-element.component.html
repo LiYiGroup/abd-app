@@ -1,4 +1,11 @@
-<nz-form-label nz-col [nzSpan]="6" nzFor="searchItem">{{everyFeild.label}}</nz-form-label>
-<nz-form-control nz-col [nzSpan]="18">
-  <input nz-input name="email" type="email" id="email">
-</nz-form-control>
+<nz-form-item *ngIf="mode==='form'">
+  <app-dynamic-form-element-content [everyFeild]="everyFeild" [control]="control">
+
+  </app-dynamic-form-element-content>
+</nz-form-item>
+
+<ng-container *ngIf="mode==='search'">
+  <app-dynamic-form-element-content [everyFeild]="everyFeild" [control]="control">
+
+  </app-dynamic-form-element-content>
+</ng-container>

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormConfig, dfControlType } from '../models/dynamic-form.model';
-import { FormGroup, FormBuilder } from '@angular/forms';
-
+import { FormConfig } from '../models/dynamic-form.model';
+import { FormGroup } from '@angular/forms';
+import { DynamicFormService } from '../services/dynamic-form.service';
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
@@ -12,10 +12,13 @@ export class DynamicFormComponent implements OnInit {
   formGroup: FormGroup;
 
   @Input() formConfig: FormConfig;
+  @Input() mode = 'form';
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private dfService: DynamicFormService) { }
 
   ngOnInit() {
-    this.formGroup = this.formBuilder.group({});
+    if (this.formConfig) {
+      this.formGroup = this.dfService.toFormGroup(this.formConfig.fields);
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FieldItem } from '../models/dynamic-form.model';
+import { FormGroup } from '@angular/forms';
+import { FieldItem, dfControlType } from '../models/dynamic-form.model';
 
 @Component({
   selector: 'app-dynamic-form-element',
@@ -8,8 +9,14 @@ import { FieldItem } from '../models/dynamic-form.model';
 })
 export class DynamicFormElementComponent implements OnInit {
   @Input() everyFeild: FieldItem;
+  controlsTypes = dfControlType;
+  @Input() formGroup: FormGroup;
+  @Input() mode: string;
 
-  constructor() { }
+  get control() { return this.formGroup.controls[this.everyFeild.key]; }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

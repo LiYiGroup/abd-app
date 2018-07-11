@@ -1,0 +1,5 @@
+<nz-form-label nz-col [nzSpan]="6" [nzFor]="everyFeild.key">{{everyFeild.label}}</nz-form-label>
+  <nz-form-control nz-col [nzSpan]="18" [ngSwitch]="everyFeild.controlType">
+    <app-df-textbox *ngSwitchCase="controlsTypes.textbox" [model]="everyFeild" [control]="control"></app-df-textbox>
+    <span *ngSwitchDefault>不支持此控件</span>
+  </nz-form-control>
