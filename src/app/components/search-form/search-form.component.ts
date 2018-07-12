@@ -21,6 +21,8 @@ export class SearchFormComponent implements OnInit {
       ]
   };
 
+  test: string;
+
   constructor() { }
 
   ngOnInit() {
@@ -28,7 +30,12 @@ export class SearchFormComponent implements OnInit {
 
   doyourjob(form) {
     // do anything you want, you can get the whole formGroup here. 
-    console.log(form.value);
-  }
+  
+    
+    form.valueChanges.subscribe(value=>{
+      console.log(form.value);
 
+      this.test = JSON.stringify(form.value);
+    });
+  }
 }
