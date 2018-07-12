@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 
+
 registerLocaleData(zh);
 
 @NgModule({

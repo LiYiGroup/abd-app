@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormConfig } from '../models/dynamic-form.model';
 import { FormGroup } from '@angular/forms';
 import { DynamicFormService } from '../services/dynamic-form.service';
@@ -14,11 +14,15 @@ export class DynamicFormComponent implements OnInit {
   @Input() formConfig: FormConfig;
   @Input() mode = 'form';
 
+  @Output() formInited = new EventEmitter<FormGroup>();
+
   constructor(private dfService: DynamicFormService) { }
 
   ngOnInit() {
     if (this.formConfig) {
       this.formGroup = this.dfService.toFormGroup(this.formConfig.fields);
+
+      this.formInited.emit(this.formGroup);
     }
   }
 }

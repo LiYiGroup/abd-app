@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { DynamicFormElementComponent } from './dynamic-form-element/dynamic-form-element.component';
-import { DynamicFormElementContentComponent } from './dynamic-form-element/dynamic-form-element-content.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { DynamicFormService } from './services/dynamic-form.service';
 import { DFTextboxComponent } from './controls/textbox/df-textbox.component';
+import { DFElementContentDCComponent } from './dynamic-form-element/df-element-content-dc.component';
+import { ControlHostDirective } from '../../directives/control-host.directive';
+import { DFNoSupportComponent } from './controls/df-nosupport.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -18,9 +21,12 @@ import { DFTextboxComponent } from './controls/textbox/df-textbox.component';
       DynamicFormComponent,
       DynamicFormElementComponent,
       DFTextboxComponent,
-      DynamicFormElementContentComponent
+      DFElementContentDCComponent,
+      ControlHostDirective,
+      DFNoSupportComponent
     ],
   exports: [DynamicFormComponent],
-  providers: [DynamicFormService]
+  providers: [DynamicFormService],
+  entryComponents: [DFTextboxComponent, DFNoSupportComponent]
 })
 export class DynamicFormModule { }

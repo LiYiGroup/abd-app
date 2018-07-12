@@ -26,4 +26,9 @@ export class SearchFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  doyourjob(form) {
+    // do anything you want, you can get the whole formGroup here. 
+    console.log(form.value);
+  }
+
 }
