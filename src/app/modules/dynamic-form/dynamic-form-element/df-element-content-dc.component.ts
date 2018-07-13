@@ -4,7 +4,7 @@ import { BaseControl, IControl } from '../base-control';
 import { ControlHostDirective } from '../../../directives/control-host.directive';
 import { DFTextboxComponent } from '../controls/textbox/df-textbox.component';
 import { DFNoSupportComponent } from '../controls/df-nosupport.component';
-
+import { DFRuntimeContextService } from '../services/df-runtime-context.service';
 @Component({
   selector: 'df-element-content-dc',
   templateUrl: './df-element-content-dc.component.html',
@@ -14,7 +14,7 @@ export class DFElementContentDCComponent extends BaseControl implements OnInit {
   @Input() everyFeild: FieldItem;
   @ViewChild(ControlHostDirective) host: ControlHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor(private _componentFactoryResolver: ComponentFactoryResolver, private _context: DFRuntimeContextService) {
     super();
   }
 
@@ -23,14 +23,15 @@ export class DFElementContentDCComponent extends BaseControl implements OnInit {
   }
 
   loadComponent() {
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.getComponentType());
-    let viewContainerRef = this.host.viewContainerRef;
+    const componentFactory = this._componentFactoryResolver.resolveComponentFactory(this.getComponentType());
+    const viewContainerRef = this.host.viewContainerRef;
     viewContainerRef.clear();
-    let componentRef = viewContainerRef.createComponent(componentFactory);
-    let co = (<IControl>componentRef.instance);
+    const componentRef = viewContainerRef.createComponent(componentFactory);
+    const co = (<IControl>componentRef.instance);
     if (co) {
       co.control = this.control;
       co.model = this.everyFeild;
+      this._context.addComponents(co);
     }
   }
 

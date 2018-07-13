@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { dfControlType, FormConfig } from '../../modules/dynamic-form/models/dynamic-form.model';
+import { DynamicFormComponent } from '../../modules/dynamic-form/dynamic-form/dynamic-form.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.css']
 })
-export class SearchFormComponent implements OnInit {
+export class SearchFormComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild(DynamicFormComponent) dForm: DynamicFormComponent;
+
+  private _subs: Array<Subscription> = [];
 
   SearchFormConfig: FormConfig = {
     columns: 4,
@@ -28,14 +33,25 @@ export class SearchFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  doyourjob(form) {
-    // do anything you want, you can get the whole formGroup here. 
-  
-    
-    form.valueChanges.subscribe(value=>{
-      console.log(form.value);
+  ngAfterViewInit() {
+    const c = this.dForm.context;
+    // outside of the event-loop, refresh at the next loop
+    const st = setTimeout(() => {
+      c.getComponent('bumpName').control.setValue('HHHHHHHH');
+      clearTimeout(st);
+    }, 100);
+  }
 
-      this.test = JSON.stringify(form.value);
-    });
+  doyourjob(form) {
+    // do anything you want, you can get the whole formGroup here.
+    this._subs.push(form.valueChanges.subscribe(value => {
+      console.log(value);
+      this.test = JSON.stringify(value);
+    }));
+  }
+
+  ngOnDestroy() {
+    // must unsubscribe all Subscriptions
+    this._subs.filter(x => x).forEach(x => x.unsubscribe());
   }
 }

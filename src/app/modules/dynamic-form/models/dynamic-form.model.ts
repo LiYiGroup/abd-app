@@ -11,6 +11,11 @@ export class FormConfig {
     fields: FieldItem[];
 }
 
+export class DoThing {
+    constructor(public key: string, public resource: any) {
+    }
+}
+
 export class TextboxFieldItem extends FieldItem {
     isMultipleLine: boolean;
 
