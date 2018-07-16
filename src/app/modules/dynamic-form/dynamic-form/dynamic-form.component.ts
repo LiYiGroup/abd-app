@@ -17,14 +17,24 @@ export class DynamicFormComponent implements OnInit {
   @Input() mode = 'form';
 
   @Output() formInited = new EventEmitter<FormGroup>();
+  @Output() customizeSubmit = new EventEmitter<FormGroup>();
+
 
   constructor(private _dfService: DynamicFormService, public context: DFRuntimeContextService) { }
 
   ngOnInit() {
-    if (this.formConfig) {
-      this.formGroup = this._dfService.toFormGroup(this.formConfig.fields);
 
+    if (this.formConfig) {
+
+      this.formGroup = this._dfService.toFormGroup(this.formConfig.fields);
       this.formInited.emit(this.formGroup);
+
     }
   }
+  onSubmit() {
+
+    this.customizeSubmit.emit(this.formGroup);
+
+  }
+
 }

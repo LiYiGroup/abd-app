@@ -12,7 +12,7 @@ import { AppSiderComponent } from './components/app-sider/app-sider.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
-import { SearchFormComponent } from './components/search-form/search-form.component';
+import { BumpInfoComponent } from './components/bump-info/bump-info.component';
 
 
 registerLocaleData(zh);
@@ -22,7 +22,7 @@ registerLocaleData(zh);
     AppComponent,
     AppSiderComponent,
     HeaderComponent,
-    SearchFormComponent
+    BumpInfoComponent
   ],
   imports: [
     BrowserModule,
