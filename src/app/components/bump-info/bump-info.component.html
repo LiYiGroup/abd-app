@@ -1,0 +1,4 @@
+<p>
+  {{ bumpSearchConditon }}
+</p>
+<app-dynamic-form mode="search" [formConfig]="BumpInfoConfig" (formInited)="doyourjob($event)" (customizeSubmit)="ngSubmit($event)"></app-dynamic-form>

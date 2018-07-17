@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SearchFormComponent } from './components/search-form/search-form.component';
+import { BumpInfoComponent } from './components/bump-info/bump-info.component';
 
 const routes: Routes = [
-  { path: 'form', component: SearchFormComponent }
+  { path: 'bump-info', component: BumpInfoComponent }
 ];
 
 

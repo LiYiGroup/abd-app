@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchFormComponent } from './search-form.component';
+import { BumpInfoComponent } from './bump-info.component';
 
-describe('SearchFormComponent', () => {
-  let component: SearchFormComponent;
-  let fixture: ComponentFixture<SearchFormComponent>;
+describe('BumpInfoComponent', () => {
+  let component: BumpInfoComponent;
+  let fixture: ComponentFixture<BumpInfoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchFormComponent ]
+      declarations: [ BumpInfoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchFormComponent);
+    fixture = TestBed.createComponent(BumpInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
