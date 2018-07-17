@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IControl } from '../base-control';
 import { DoThing } from '../models/dynamic-form.model';
 @Component({
-  template: `<span>不支持此控件</span>`
+  template: `<nz-tag [nzColor]="'red'">不支持此控件</nz-tag>`
 })
 
 export class DFNoSupportComponent implements OnInit, IControl {

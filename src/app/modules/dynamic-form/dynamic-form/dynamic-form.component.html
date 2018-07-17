@@ -1,7 +1,7 @@
 <form nz-form [formGroup]="formGroup">
   <div nz-row [nzGutter]="16">
     <ng-container *ngFor="let everyField of formConfig.fields; let i=index;">
-      <div nz-col [nzSpan]="24/formConfig.columns">
+      <div nz-col nzXs="24" nzSm="24"  [nzMd]="24/formConfig.columns">
         <app-dynamic-form-element [mode]="mode" [formGroup]="formGroup" [everyFeild]="everyField"></app-dynamic-form-element>
       </div>
       <div *ngIf="i>0 && ((i+1)%(formConfig.columns)===0)" class="clearfix"></div>
