@@ -57,5 +57,5 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngSubmit(form) {
     console.log(form.value);
-  };
+  }
 }
