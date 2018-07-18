@@ -38,6 +38,10 @@ export class DynamicFormComponent implements OnInit {
     return ret;
   }
 
+  onSubmit() {
+    alert('submit');
+  }
+
   private getRealIndex(rowidx, colidx) {
     return rowidx * this.formConfig.columns + colidx;
   }

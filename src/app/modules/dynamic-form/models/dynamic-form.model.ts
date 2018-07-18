@@ -21,6 +21,8 @@ export const dfControlType = {
     textbox: 'textbox',
     textarea: 'textarea',
     selection: 'selection',
-    datepicker: 'datepicker'
+    datepicker: 'datepicker',
+    space: 'space',
+    submit: 'submit'
 };
 

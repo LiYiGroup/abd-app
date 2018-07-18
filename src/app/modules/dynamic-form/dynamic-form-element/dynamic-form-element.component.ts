@@ -6,6 +6,8 @@ import { DFRuntimeContextService } from '../services/df-runtime-context.service'
 import { IControl } from '../base-control';
 import { DFTextboxComponent } from '../controls/textbox/df-textbox.component';
 import { DFNoSupportComponent } from '../controls/df-nosupport.component';
+import { DFSpaceComponent } from '../controls/df-space.component';
+import { DFSubmitComponent } from '../controls/df-submit-button.component';
 
 @Component({
   selector: 'app-dynamic-form-element',
@@ -42,6 +44,8 @@ export class DynamicFormElementComponent implements OnInit {
   private getComponentType() {
     switch (this.everyFeild.controlType) {
       case dfControlType.textbox: return DFTextboxComponent;
+      case dfControlType.space: return DFSpaceComponent;
+      case dfControlType.submit: return DFSubmitComponent;
       default: return DFNoSupportComponent;
     }
   }

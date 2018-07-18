@@ -4,7 +4,6 @@ import { BaseControl, IControl } from '../../base-control';
 import { DoThing } from '../../models/dynamic-form.model';
 
 @Component({
-  selector: 'app-df-textbox',
   templateUrl: './df-textbox.component.html',
   styleUrls: ['./df-textbox.component.css']
 })

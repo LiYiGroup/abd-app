@@ -8,6 +8,8 @@ import { DynamicFormService } from './services/dynamic-form.service';
 import { DFTextboxComponent } from './controls/textbox/df-textbox.component';
 import { ControlHostDirective } from '../../directives/control-host.directive';
 import { DFNoSupportComponent } from './controls/df-nosupport.component';
+import { DFSpaceComponent } from './controls/df-space.component';
+import { DFSubmitComponent } from './controls/df-submit-button.component';
 
 @NgModule({
   imports: [
@@ -21,10 +23,12 @@ import { DFNoSupportComponent } from './controls/df-nosupport.component';
       DynamicFormElementComponent,
       DFTextboxComponent,
       ControlHostDirective,
-      DFNoSupportComponent
+      DFNoSupportComponent,
+      DFSpaceComponent,
+      DFSubmitComponent
     ],
   exports: [DynamicFormComponent],
   providers: [DynamicFormService],
-  entryComponents: [DFTextboxComponent, DFNoSupportComponent]
+  entryComponents: [DFTextboxComponent, DFNoSupportComponent, DFSubmitComponent, DFSpaceComponent]
 })
 export class DynamicFormModule { }
