@@ -1,11 +1,10 @@
-<form nz-form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div nz-row [nzGutter]="16">
-    <ng-container *ngFor="let everyField of formConfig.fields; let i=index;">
-      <div nz-col nzXs="24" nzSm="24"  [nzMd]="24/formConfig.columns">
-        <app-dynamic-form-element [mode]="mode" [formGroup]="formGroup" [everyFeild]="everyField"></app-dynamic-form-element>
-      </div>
-      <div *ngIf="i>0 && ((i+1)%(formConfig.columns)===0)" class="clearfix"></div>
+<form nz-form [formGroup]="formGroup">
+  <div *ngFor="let rowIndex of rows " nz-row [nzGutter]="16">
+    <ng-container *ngFor="let colIndex of columns">
+        <div nz-col nzXs="24" nzSm="24"  [nzMd]="24/formConfig.columns">
+          <app-dynamic-form-element *ngIf="getRealIndex(rowIndex,colIndex) < (formConfig.fields.length)" 
+           [formGroup]="formGroup" [everyFeild]="formConfig.fields[getRealIndex(rowIndex,colIndex)]"></app-dynamic-form-element>
+        </div>
     </ng-container>
   </div>
-  <button nz-button nzType="primary" type="submit">Submit</button>
 </form>

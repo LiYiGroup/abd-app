@@ -1,3 +1,4 @@
+
 export class FieldItem {
     key: string;
     value: any;
@@ -16,16 +17,9 @@ export class DoThing {
     }
 }
 
-export class TextboxFieldItem extends FieldItem {
-    isMultipleLine: boolean;
-
-    constructor() {
-        super();
-    }
-}
-
 export const dfControlType = {
     textbox: 'textbox',
+    textarea: 'textarea',
     selection: 'selection',
     datepicker: 'datepicker'
 };

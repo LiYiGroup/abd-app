@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { DynamicFormService } from './services/dynamic-form.service';
 import { DFTextboxComponent } from './controls/textbox/df-textbox.component';
-import { DFElementContentDCComponent } from './dynamic-form-element/df-element-content-dc.component';
 import { ControlHostDirective } from '../../directives/control-host.directive';
 import { DFNoSupportComponent } from './controls/df-nosupport.component';
 
@@ -21,7 +20,6 @@ import { DFNoSupportComponent } from './controls/df-nosupport.component';
       DynamicFormComponent,
       DynamicFormElementComponent,
       DFTextboxComponent,
-      DFElementContentDCComponent,
       ControlHostDirective,
       DFNoSupportComponent
     ],

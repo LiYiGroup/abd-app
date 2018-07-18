@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TextboxFieldItem } from '../../models/dynamic-form.model';
+import { FieldItem } from '../../models/dynamic-form.model';
 import { BaseControl, IControl } from '../../base-control';
 import { DoThing } from '../../models/dynamic-form.model';
 
@@ -10,7 +10,7 @@ import { DoThing } from '../../models/dynamic-form.model';
 })
 
 export class DFTextboxComponent extends BaseControl implements OnInit, IControl {
-  @Input() model: TextboxFieldItem;
+  @Input() model: FieldItem;
   constructor() {
     super();
   }
