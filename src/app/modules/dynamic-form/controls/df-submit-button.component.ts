@@ -4,7 +4,7 @@ import { DoThing } from '../models/dynamic-form.model';
 @Component({
   template: `<nz-form-item nz-row>
               <nz-form-control [nzSpan]="24">
-                <button [style.float]="{}" nz-button nzType="primary" type="submit">{{model.label}}</button>
+                <button nz-button nzType="primary" type="submit">{{model.label}}</button>
               </nz-form-control>
              </nz-form-item>`
 })

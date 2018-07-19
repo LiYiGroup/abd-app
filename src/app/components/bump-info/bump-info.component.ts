@@ -14,7 +14,7 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
   private _subs: Array<Subscription> = [];
 
   BumpInfoConfig: FormConfig = {
-    columns: 4,
+    columns: 2,
     fields:
       [
         { key: 'bumpName', label: '泵名称', value: null, controlType: dfControlType.textbox, placeholder: '泵名称' },
@@ -28,6 +28,10 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
       ]
   };
 
+  initModel = {
+    bumpName: 'xxxxx'
+  };
+
   bumpSearchConditon: string;
 
   constructor() { }
@@ -38,10 +42,10 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     const c = this.dForm.context;
     // outside of the event-loop, refresh at the next loop
-    const st = setTimeout(() => {
-      c.getComponent('bumpName').control.setValue('HHHHHHHH');
-      clearTimeout(st);
-    }, 100);
+    // const st = setTimeout(() => {
+    //   c.getComponent('bumpName').control.setValue('HHHHHHHH');
+    //   clearTimeout(st);
+    // }, 100);
   }
 
   doyourjob(form) {

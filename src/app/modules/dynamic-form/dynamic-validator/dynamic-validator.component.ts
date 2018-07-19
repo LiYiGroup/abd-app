@@ -8,7 +8,7 @@ import { BaseControl } from '../base-control';
 })
 export class DynamicValidatorComponent extends BaseControl implements OnInit {
 
-  @Input() target: string;
+  @Input() targetText: string;
   constructor() {
     super();
   }

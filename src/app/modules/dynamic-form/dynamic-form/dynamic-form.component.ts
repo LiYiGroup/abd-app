@@ -14,6 +14,7 @@ export class DynamicFormComponent implements OnInit {
   formGroup: FormGroup;
 
   @Input() formConfig: FormConfig;
+  @Input() initialModel: any;
   @Output() formInited = new EventEmitter<FormGroup>();
 
   private rows: number[];
@@ -25,6 +26,13 @@ export class DynamicFormComponent implements OnInit {
     if (this.formConfig && this.validateFormConfig()) {
       this.rows = this.getArrayFromNum(Math.ceil((this.formConfig.fields.length) / (this.formConfig.columns)), 0);
       this.columns = this.getArrayFromNum(this.formConfig.columns, 0);
+
+      this.formConfig.fields.forEach(eachField => {
+        if (this.initialModel) {
+          eachField.value = this.initialModel[eachField.key] || eachField.value;
+        }
+      });
+
       this.formGroup = this._dfService.toFormGroup(this.formConfig.fields);
       this.formInited.emit(this.formGroup);
     }
@@ -39,7 +47,6 @@ export class DynamicFormComponent implements OnInit {
   }
 
   onSubmit() {
-    alert('submit');
   }
 
   private getRealIndex(rowidx, colidx) {
