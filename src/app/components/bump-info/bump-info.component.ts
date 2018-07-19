@@ -19,12 +19,12 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
       [
         { key: 'bumpName', label: '泵名称', value: null, controlType: dfControlType.textbox, placeholder: '泵名称' },
         { key: 'bumpType', label: '型号', value: null, controlType: dfControlType.textbox, placeholder: '型号' },
-        { key: 'bumpFlow', label: '流量', value: null, controlType: dfControlType.textbox, placeholder: '流量' },
+        { key: 'bumpSeal11', label: '流量', value: null, controlType: dfControlType.textbox, placeholder: '流量' },
         { key: 'bumpLift', label: '扬程', value: null, controlType: dfControlType.textbox, placeholder: '扬程' },
         { key: 'bumpMaterial', label: '材质', value: null, controlType: dfControlType.textbox, placeholder: '材质' },
         { key: 'bumpSeal', label: '机封', value: null, controlType: dfControlType.textbox, placeholder: '机封' },
-        { key: 'bumpSeal', label: '机封', value: null, controlType: dfControlType.space, placeholder: '机封' },
-        { key: 'bumpSeal', label: '查询', value: null, controlType: dfControlType.submit, placeholder: '机封' }
+        { key: 'bumpSeal1', label: '机封', value: null, controlType: dfControlType.space, placeholder: '机封' },
+        { key: 'bumpSeal2', label: '查询', value: null, controlType: dfControlType.submit, placeholder: '机封' }
       ]
   };
 

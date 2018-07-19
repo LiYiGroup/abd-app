@@ -74,6 +74,22 @@ export class DynamicFormComponent implements OnInit {
       console.error('columns setting have to be 1/2/3/4 in form config!!');
       return false;
     }
+
+    const existDuplicated = this.formConfig.fields.some((v, i, arr) => {
+      return arr.some((ieach, ii) => {
+        if (i !== ii) {
+          return ieach.key === v.key;
+        } else {
+          return false;
+        }
+      });
+    });
+
+    if (existDuplicated) {
+      console.error('duplicated key in form config!!');
+      return false;
+    }
+
     return true;
   }
 }
