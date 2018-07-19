@@ -2,7 +2,8 @@
     <nz-form-label nz-col [nzSpan]="6" [nzFor]="model.key">{{model.label}}</nz-form-label>
     <nz-form-control nz-col [nzSpan]="18">
         <input nz-input [placeholder]="model.placeholder" [formControl]="control" [attr.id]="model.key">
-        <nz-form-explain *ngIf="control.dirty && control.errors">Please input your username!</nz-form-explain>
-        <nz-form-explain *ngIf="control.dirty && control.errors">Please input your username!</nz-form-explain>
+        <nz-form-explain>
+            <app-dynamic-validator [control]="control" [target]="model.label"></app-dynamic-validator>
+        </nz-form-explain>
     </nz-form-control>
 </nz-form-item>

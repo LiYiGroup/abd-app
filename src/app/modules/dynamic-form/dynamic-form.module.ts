@@ -10,6 +10,7 @@ import { ControlHostDirective } from '../../directives/control-host.directive';
 import { DFNoSupportComponent } from './controls/df-nosupport.component';
 import { DFSpaceComponent } from './controls/df-space.component';
 import { DFSubmitComponent } from './controls/df-submit-button.component';
+import { DynamicValidatorComponent } from './dynamic-validator/dynamic-validator.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { DFSubmitComponent } from './controls/df-submit-button.component';
       ControlHostDirective,
       DFNoSupportComponent,
       DFSpaceComponent,
-      DFSubmitComponent
+      DFSubmitComponent,
+      DynamicValidatorComponent
     ],
   exports: [DynamicFormComponent],
   providers: [DynamicFormService],

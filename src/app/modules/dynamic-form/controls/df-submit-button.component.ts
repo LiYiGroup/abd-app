@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IControl } from '../base-control';
+import { IControl, BaseControl } from '../base-control';
 import { DoThing } from '../models/dynamic-form.model';
 @Component({
   template: `<nz-form-item nz-row>
@@ -9,11 +9,10 @@ import { DoThing } from '../models/dynamic-form.model';
              </nz-form-item>`
 })
 
-export class DFSubmitComponent implements OnInit, IControl {
+export class DFSubmitComponent extends BaseControl implements OnInit, IControl {
   model: any;
-  control: any;
-
   constructor() {
+    super();
   }
   ngOnInit() {
   }

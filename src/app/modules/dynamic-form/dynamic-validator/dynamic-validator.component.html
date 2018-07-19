@@ -1,0 +1,16 @@
+<div *ngIf="control.invalid && control.dirty">
+  <div *ngIf="control.errors.required">
+    {{ target + '为必填项'}}
+  </div>
+  <div *ngIf="control.errors.minlength">
+    {{ target + '的最小长度为' + control.errors.minlength.requiredLength}}
+  </div>
+  <div *ngIf="control.errors.maxlength">
+    {{ target + '的最大长度为' + control.errors.maxlength.requiredLength}}
+  </div>
+  <div *ngIf="control.errors.email">
+    邮箱格式错误
+  </div>
+  <div *ngIf="control.errors.custom">
+  </div>
+</div>

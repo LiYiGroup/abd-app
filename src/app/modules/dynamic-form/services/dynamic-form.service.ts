@@ -10,6 +10,9 @@ export class DynamicFormService {
             const ta = new FormControl(item.value);
             const validateFuns: ValidatorFn[] = [];
             validateFuns.push(Validators.required);
+            validateFuns.push(Validators.minLength(5));
+            validateFuns.push(Validators.maxLength(7));
+            validateFuns.push(Validators.email);
             ta.setValidators(validateFuns);
             group[item.key] = ta;
         });
