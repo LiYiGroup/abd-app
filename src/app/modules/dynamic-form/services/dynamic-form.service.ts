@@ -9,10 +9,30 @@ export class DynamicFormService {
         items.forEach(item => {
             const ta = new FormControl(item.value);
             const validateFuns: ValidatorFn[] = [];
-            validateFuns.push(Validators.required);
-            validateFuns.push(Validators.minLength(5));
-            validateFuns.push(Validators.maxLength(7));
-            validateFuns.push(Validators.email);
+
+            if (item.validator) {
+                if (item.validator.isRequired) {
+                    validateFuns.push(Validators.required);
+                }
+
+                if (item.validator.maxLength > 0) {
+                    validateFuns.push(Validators.maxLength(item.validator.maxLength));
+                }
+
+                if (item.validator.minLength > 0) {
+                    validateFuns.push(Validators.minLength(item.validator.minLength));
+                }
+
+                if (item.validator.email) {
+                    validateFuns.push(Validators.email);
+                }
+
+                if (item.validator.regularExpress) {
+                    validateFuns.push(Validators.pattern(item.validator.regularExpress.value));
+                }
+
+            }
+
             ta.setValidators(validateFuns);
             group[item.key] = ta;
         });

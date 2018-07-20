@@ -5,6 +5,18 @@ export class FieldItem {
     controlType: string;
     label: string;
     placeholder: string;
+    validator?: DfValidation;
+}
+
+export class DfValidation {
+    isRequired: boolean;
+    maxLength?: number;
+    minLength?: number;
+    email?: boolean;
+    regularExpress?: {
+        value: string,
+        msg: string
+    };
 }
 
 export class FormConfig {
