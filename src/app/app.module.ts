@@ -13,6 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DynamicFormModule } from './modules/dynamic-form/dynamic-form.module';
 import { BumpInfoComponent } from './components/bump-info/bump-info.component';
+import { MockUpServiceConfig, RealServiceConfig } from './service-config';
+
 
 
 registerLocaleData(zh);
@@ -33,7 +35,12 @@ registerLocaleData(zh);
     AppRoutingModule,
     DynamicFormModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers:
+    [
+      { provide: NZ_I18N, useValue: zh_CN },
+      // ...MockUpServiceConfig
+      ...RealServiceConfig
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
