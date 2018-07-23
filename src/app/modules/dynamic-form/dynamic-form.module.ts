@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { DynamicFormService } from './services/dynamic-form.service';
 import { DFTextboxComponent } from './controls/textbox/df-textbox.component';
+import { DFSelectboxComponent } from './controls/selectBox/df-select-box.component';
 import { ControlHostDirective } from '../../directives/control-host.directive';
 import { DFNoSupportComponent } from './controls/df-nosupport.component';
 import { DFSpaceComponent } from './controls/df-space.component';
@@ -27,10 +28,18 @@ import { DynamicValidatorComponent } from './dynamic-validator/dynamic-validator
       DFNoSupportComponent,
       DFSpaceComponent,
       DFSubmitComponent,
-      DynamicValidatorComponent
+      DynamicValidatorComponent,
+      DFSelectboxComponent
     ],
   exports: [DynamicFormComponent],
   providers: [DynamicFormService],
-  entryComponents: [DFTextboxComponent, DFNoSupportComponent, DFSubmitComponent, DFSpaceComponent]
+  entryComponents:
+    [
+      DFTextboxComponent,
+      DFNoSupportComponent,
+      DFSubmitComponent,
+      DFSpaceComponent,
+      DFSelectboxComponent
+    ]
 })
 export class DynamicFormModule { }

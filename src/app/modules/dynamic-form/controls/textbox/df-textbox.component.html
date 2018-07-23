@@ -1,7 +1,10 @@
 <nz-form-item style="margin-bottom: 0;">
     <nz-form-label nz-col [nzSpan]="6" [nzFor]="model.key">{{model.label}}</nz-form-label>
     <nz-form-control nz-col [nzSpan]="18">
-        <input nz-input [placeholder]="model.placeholder" [maxlength]="model.validator?.maxLength" [formControl]="control" [attr.id]="model.key">
+        <textarea *ngIf="model.isMultipleLine" nz-input [placeholder]="model.placeholder" [maxlength]="model.validator?.maxLength"
+            [formControl]="control" [attr.id]="model.key">
+        </textarea>
+        <input *ngIf="!model.isMultipleLine" nz-input [placeholder]="model.placeholder" [maxlength]="model.validator?.maxLength" [formControl]="control" [attr.id]="model.key">
         <nz-form-explain>
             <app-dynamic-validator [control]="control" [targetText]="model.label"></app-dynamic-validator>
         </nz-form-explain>

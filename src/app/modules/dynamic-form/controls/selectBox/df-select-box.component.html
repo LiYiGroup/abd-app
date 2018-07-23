@@ -1,0 +1,14 @@
+<nz-form-item style="margin-bottom: 0;">
+    <nz-form-label nz-col [nzSpan]="6" [nzFor]="model.key">{{model.label}}</nz-form-label>
+    <nz-form-control nz-col [nzSpan]="18">
+        <nz-select style="width: 100%" [nzMode]="model.mode" [formControl]="control" nzAllowClear
+            [nzPlaceHolder]="model.placeholder">
+            <ng-container *ngIf="model.fixedOptions && model.fixedOptions.length>0">
+                <nz-option *ngFor="let eachopt of model.fixedOptions" [nzValue]="eachopt.value" [nzLabel]="eachopt.text"></nz-option>
+            </ng-container>
+        </nz-select>
+        <nz-form-explain>
+            <app-dynamic-validator [control]="control" [targetText]="model.label"></app-dynamic-validator>
+        </nz-form-explain>
+    </nz-form-control>
+</nz-form-item>

@@ -22,7 +22,6 @@ export class DynamicFormComponent implements OnInit {
   private rows: number[];
   private columns: number[];
 
-
   constructor(private _dfService: DynamicFormService, public context: DFRuntimeContextService) { }
 
   ngOnInit() {

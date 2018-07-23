@@ -8,6 +8,7 @@ import { DFTextboxComponent } from '../controls/textbox/df-textbox.component';
 import { DFNoSupportComponent } from '../controls/df-nosupport.component';
 import { DFSpaceComponent } from '../controls/df-space.component';
 import { DFSubmitComponent } from '../controls/df-submit-button.component';
+import { DFSelectboxComponent } from '../controls/selectBox/df-select-box.component';
 
 @Component({
   selector: 'app-dynamic-form-element',
@@ -35,9 +36,15 @@ export class DynamicFormElementComponent implements OnInit {
     const componentRef = viewContainerRef.createComponent(componentFactory);
     const co = (<IControl>componentRef.instance);
     if (co) {
-      co.control = this.control;
-      co.model = this.everyFeild;
-      this._context.addComponents(co);
+      if (this.everyFeild.controlType === dfControlType.space) {
+      } else if (this.everyFeild.controlType === dfControlType.submit) {
+        co.control = this.formGroup;
+        co.model = this.everyFeild;
+      } else {
+        co.control = this.control;
+        co.model = this.everyFeild;
+        this._context.addComponents(co);
+      }
     }
   }
 
@@ -46,6 +53,7 @@ export class DynamicFormElementComponent implements OnInit {
       case dfControlType.textbox: return DFTextboxComponent;
       case dfControlType.space: return DFSpaceComponent;
       case dfControlType.submit: return DFSubmitComponent;
+      case dfControlType.selection: return DFSelectboxComponent;
       default: return DFNoSupportComponent;
     }
   }

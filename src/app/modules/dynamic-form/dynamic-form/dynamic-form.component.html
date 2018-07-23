@@ -1,6 +1,6 @@
 <div style="position: relative;">
   <div class="form-loading-icon" [hidden]="!isWorking">
-    <nz-spin [nzSize]="'large'"></nz-spin>
+    <nz-spin [nzSize]="'large'" style="color: black;"></nz-spin>
   </div>
   <form nz-form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div *ngFor="let rowIndex of rows " nz-row [nzGutter]="16">
