@@ -17,19 +17,30 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     columns: 2,
     fields:
       [
-        { key: 'bumpName', label: '泵名称', value: null, controlType: dfControlType.textbox, placeholder: '泵名称' },
+        {
+          key: 'bumpName', label: '泵名称', value: null, controlType: dfControlType.textbox, placeholder: '泵名称',
+          validator: {
+            isRequired: true, maxLength: 7, minLength: 5
+          }
+        },
         { key: 'bumpType', label: '型号', value: null, controlType: dfControlType.textbox, placeholder: '型号' },
         { key: 'bumpSeal11', label: '流量', value: null, controlType: dfControlType.textbox, placeholder: '流量' },
         { key: 'bumpLift', label: '扬程', value: null, controlType: dfControlType.textbox, placeholder: '扬程' },
         { key: 'bumpMaterial', label: '材质', value: null, controlType: dfControlType.textbox, placeholder: '材质' },
-        { key: 'bumpSeal', label: '机封', value: null, controlType: dfControlType.textbox, placeholder: '机封' },
+        {
+          key: 'bumpSeal', label: '机封', value: null, controlType: dfControlType.textbox, placeholder: '机封', validator: {
+            isRequired: false, regularExpress: { value: /^abc$/, msg: '格式非法!!!' }
+          }
+        },
         { key: 'bumpSeal1', label: '机封', value: null, controlType: dfControlType.space, placeholder: '机封' },
-        { key: 'bumpSeal2', label: '查询', value: null, controlType: dfControlType.submit, placeholder: '机封' }
+        {
+          key: 'bumpSeal2', label: '查询', value: null, controlType: dfControlType.submit, placeholder: '机封'
+        }
       ]
   };
 
   initModel = {
-    bumpName: 'xxxxx'
+    bumpName: 'xxxxxxxxxxxxxxxx'
   };
 
   bumpSearchConditon: string;

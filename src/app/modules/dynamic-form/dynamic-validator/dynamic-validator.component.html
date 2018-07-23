@@ -11,6 +11,10 @@
   <div *ngIf="control.errors.email">
     邮箱格式错误
   </div>
+  <div *ngIf="control.errors.matchRegExp">
+    {{ control.errors.matchRegExp.msg}}
+  </div>
   <div *ngIf="control.errors.custom">
+    {{ control.errors.custom.msg}}
   </div>
 </div>

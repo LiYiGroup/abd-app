@@ -14,7 +14,7 @@ export class DfValidation {
     minLength?: number;
     email?: boolean;
     regularExpress?: {
-        value: string,
+        value: RegExp,
         msg: string
     };
 }

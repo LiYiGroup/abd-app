@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { FieldItem } from '../models/dynamic-form.model';
+import { CustomValidators } from '../../../common/CustomValidators';
 
 @Injectable()
 export class DynamicFormService {
@@ -28,7 +29,8 @@ export class DynamicFormService {
                 }
 
                 if (item.validator.regularExpress) {
-                    validateFuns.push(Validators.pattern(item.validator.regularExpress.value));
+                    validateFuns.push(CustomValidators.matchRegExp(item.validator.regularExpress.value,
+                        item.validator.regularExpress.msg));
                 }
 
             }

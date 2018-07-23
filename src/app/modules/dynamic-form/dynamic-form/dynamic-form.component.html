@@ -1,10 +1,14 @@
-<form nz-form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div *ngFor="let rowIndex of rows " nz-row [nzGutter]="16">
-    <ng-container *ngFor="let colIndex of columns">
-        <div nz-col nzXs="24" nzSm="24"  [nzMd]="24/formConfig.columns">
-          <app-dynamic-form-element *ngIf="getRealIndex(rowIndex,colIndex) < (formConfig.fields.length)" 
-           [formGroup]="formGroup" [everyFeild]="formConfig.fields[getRealIndex(rowIndex,colIndex)]"></app-dynamic-form-element>
-        </div>
-    </ng-container>
+<div style="position: relative;">
+  <div class="form-loading-icon" [hidden]="!isWorking">
+    <nz-spin [nzSize]="'large'"></nz-spin>
   </div>
-</form>
+  <form nz-form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div *ngFor="let rowIndex of rows " nz-row [nzGutter]="16">
+      <ng-container *ngFor="let colIndex of columns">
+        <div nz-col nzXs="24" nzSm="24" [nzMd]="24/formConfig.columns">
+          <app-dynamic-form-element *ngIf="getRealIndex(rowIndex,colIndex) < (formConfig.fields.length)" [formGroup]="formGroup" [everyFeild]="formConfig.fields[getRealIndex(rowIndex,colIndex)]"></app-dynamic-form-element>
+        </div>
+      </ng-container>
+    </div>
+  </form>
+</div>

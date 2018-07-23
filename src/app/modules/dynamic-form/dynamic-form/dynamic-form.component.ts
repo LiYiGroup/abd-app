@@ -3,6 +3,7 @@ import { FormConfig } from '../models/dynamic-form.model';
 import { FormGroup } from '@angular/forms';
 import { DynamicFormService } from '../services/dynamic-form.service';
 import { DFRuntimeContextService } from '../services/df-runtime-context.service';
+
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
@@ -12,13 +13,15 @@ import { DFRuntimeContextService } from '../services/df-runtime-context.service'
 
 export class DynamicFormComponent implements OnInit {
   formGroup: FormGroup;
-
+  @Input() isWorking = false;
   @Input() formConfig: FormConfig;
   @Input() initialModel: any;
   @Output() formInited = new EventEmitter<FormGroup>();
+  @Output() formSubmit = new EventEmitter();
 
   private rows: number[];
   private columns: number[];
+
 
   constructor(private _dfService: DynamicFormService, public context: DFRuntimeContextService) { }
 
@@ -47,6 +50,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.formSubmit.emit();
   }
 
   private getRealIndex(rowidx, colidx) {
