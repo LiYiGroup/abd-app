@@ -85,7 +85,6 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
   doyourjob(form) {
     // do anything you want, you can get the whole formGroup here.
     this._subs.push(form.valueChanges.subscribe(value => {
-      console.log(value);
       this.bumpSearchConditon = JSON.stringify(value);
     }));
   }
