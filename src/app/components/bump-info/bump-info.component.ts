@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular
 import {
   FormConfig, TextboxItem,
   SelectionBoxItem, WhiteSpaceItem,
-  SubmitItem
+  SubmitItem, CustomItem, DatetimePickerItem
 } from '../../modules/dynamic-form/models/dynamic-form.model';
 import { DynamicFormComponent } from '../../modules/dynamic-form/dynamic-form/dynamic-form.component';
 import { Subscription, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-bump-info',
@@ -23,7 +24,7 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
     fields:
       [
         new TextboxItem({
-          key: 'bumpName', label: '泵名称', placeholder: '泵名称',
+          key: 'bumpName', label: '泵名称', placeholder: '泵名称', span: 2,
           validator: {
             isRequired: true, maxLength: 7, minLength: 5
           }
@@ -33,22 +34,28 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
             isRequired: true
           }, fixedOptions: [{ value: '1', text: 'text1' }, { value: '2', text: 'text2' }, { value: '3', text: 'text3' }]
         }),
-        new TextboxItem({
-          key: 'bumpSeal11', label: '流量', placeholder: '流量'
+        new DatetimePickerItem({
+          key: 'bumpSeal11', label: '流量', placeholder: '流量', span: 2
         }),
         new TextboxItem({
           key: 'bumpLift', label: '扬程', placeholder: '扬程'
         }),
         new TextboxItem({
-          key: 'bumpMaterial', label: '材质', placeholder: '材质', isMultipleLine: true
+          key: 'bumpMaterial', label: '材质', placeholder: '材质',
         }),
         new TextboxItem({
-          key: 'bumpSeal', label: '机封', placeholder: '机封', isMultipleLine: true,
+          key: 'bumpSeal', label: '机封', placeholder: '机封', span: 2,
           validator: {
             isRequired: true, regularExpress: { value: /^abc$/, msg: '格式非法!!!' }
           }
         }),
-        new WhiteSpaceItem(),
+        new TextboxItem({
+          key: 'bumpSeal22', label: '机封', placeholder: '机封',
+          validator: {
+            isRequired: true, regularExpress: { value: /^abc$/, msg: '格式非法!!!' }
+          }
+        }),
+        new CustomItem({ key: 'cccc', label: 'cccc', placeholder: 'cccc', component: HeaderComponent }),
         new SubmitItem({ key: 'btn', label: '机封', placeholder: '机封' })]
   };
 
@@ -60,7 +67,8 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   bumpSearchConditon: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

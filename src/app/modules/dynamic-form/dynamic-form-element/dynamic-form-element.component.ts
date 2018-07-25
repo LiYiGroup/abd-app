@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { FieldItem, dfControlType } from '../models/dynamic-form.model';
+import { FieldItem, dfControlType, CustomItem } from '../models/dynamic-form.model';
 import { ControlHostDirective } from '../../../directives/control-host.directive';
 import { DFRuntimeContextService } from '../services/df-runtime-context.service';
 import { IControl } from '../base-control';
@@ -9,6 +9,7 @@ import { DFNoSupportComponent } from '../controls/df-nosupport.component';
 import { DFSpaceComponent } from '../controls/df-space.component';
 import { DFSubmitComponent } from '../controls/df-submit-button.component';
 import { DFSelectboxComponent } from '../controls/selectBox/df-select-box.component';
+import { DFDatetimePickerComponent } from '../controls/datePicker/df-datetime-picker.component';
 
 @Component({
   selector: 'app-dynamic-form-element',
@@ -51,9 +52,11 @@ export class DynamicFormElementComponent implements OnInit {
   private getComponentType() {
     switch (this.everyFeild.controlType) {
       case dfControlType.textbox: return DFTextboxComponent;
+      case dfControlType.selection: return DFSelectboxComponent;
+      case dfControlType.datepicker: return DFDatetimePickerComponent;
       case dfControlType.space: return DFSpaceComponent;
       case dfControlType.submit: return DFSubmitComponent;
-      case dfControlType.selection: return DFSelectboxComponent;
+      case dfControlType.custom: return (this.everyFeild as CustomItem).component;
       default: return DFNoSupportComponent;
     }
   }

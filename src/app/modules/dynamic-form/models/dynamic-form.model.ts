@@ -1,10 +1,13 @@
 
+import { Type } from '@angular/core';
+
 export class FieldItem {
     key: string;
     value?: any;
     controlType?: string;
     label: string;
     placeholder: string;
+    span?: number;
     validator?: DfValidation;
 
     constructor(options: FieldItem) {
@@ -15,6 +18,7 @@ export class FieldItem {
             this.label = options.label;
             this.placeholder = options.placeholder;
             this.validator = options.validator;
+            this.span = options.span || 1;
         }
     }
 }
@@ -31,9 +35,10 @@ export class DfValidation {
 }
 
 export class WhiteSpaceItem extends FieldItem {
-    constructor() {
+    constructor(span: number) {
         super(null);
         this.controlType = dfControlType.space;
+        this.span = span;
     }
 }
 
@@ -53,6 +58,13 @@ export class TextboxItem extends FieldItem {
     }
 }
 
+export class DatetimePickerItem extends FieldItem {
+    constructor(options: DatetimePickerItem) {
+        super(options);
+        this.controlType = dfControlType.datepicker;
+    }
+}
+
 export class SelectionBoxItem extends FieldItem {
     mode?: string;
     fixedOptions?: { value: string, text: string }[];
@@ -66,6 +78,17 @@ export class SelectionBoxItem extends FieldItem {
         this.remoteUrl = options.remoteUrl;
     }
 }
+
+export class CustomItem extends FieldItem {
+    component: Type<any>;
+
+    constructor(options: CustomItem) {
+        super(options);
+        this.controlType = dfControlType.custom;
+        this.component = options.component;
+    }
+}
+
 
 export class FormConfig {
     columns: number;
@@ -82,6 +105,7 @@ export const dfControlType = {
     selection: 'selection',
     datepicker: 'datepicker',
     space: 'space',
-    submit: 'submit'
+    submit: 'submit',
+    custom: 'custom'
 };
 

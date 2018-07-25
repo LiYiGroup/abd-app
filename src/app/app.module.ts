@@ -41,6 +41,10 @@ registerLocaleData(zh);
       // ...MockUpServiceConfig
       ...RealServiceConfig
     ],
+  entryComponents:
+    [
+      HeaderComponent
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

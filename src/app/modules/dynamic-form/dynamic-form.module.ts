@@ -12,6 +12,7 @@ import { DFNoSupportComponent } from './controls/df-nosupport.component';
 import { DFSpaceComponent } from './controls/df-space.component';
 import { DFSubmitComponent } from './controls/df-submit-button.component';
 import { DynamicValidatorComponent } from './dynamic-validator/dynamic-validator.component';
+import { DFDatetimePickerComponent } from './controls/datePicker/df-datetime-picker.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { DynamicValidatorComponent } from './dynamic-validator/dynamic-validator
       DFSpaceComponent,
       DFSubmitComponent,
       DynamicValidatorComponent,
-      DFSelectboxComponent
+      DFSelectboxComponent,
+      DFDatetimePickerComponent
     ],
   exports: [DynamicFormComponent],
   providers: [DynamicFormService],
@@ -39,7 +41,8 @@ import { DynamicValidatorComponent } from './dynamic-validator/dynamic-validator
       DFNoSupportComponent,
       DFSubmitComponent,
       DFSpaceComponent,
-      DFSelectboxComponent
+      DFSelectboxComponent,
+      DFDatetimePickerComponent
     ]
 })
 export class DynamicFormModule { }

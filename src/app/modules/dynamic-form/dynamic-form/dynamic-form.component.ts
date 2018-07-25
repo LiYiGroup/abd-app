@@ -1,8 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormConfig } from '../models/dynamic-form.model';
+import { FormConfig, FieldItem } from '../models/dynamic-form.model';
 import { FormGroup } from '@angular/forms';
 import { DynamicFormService } from '../services/dynamic-form.service';
 import { DFRuntimeContextService } from '../services/df-runtime-context.service';
+
+class LayoutItem {
+  f: FieldItem;
+  span: number;
+}
 
 @Component({
   selector: 'app-dynamic-form',
@@ -19,15 +24,14 @@ export class DynamicFormComponent implements OnInit {
   @Output() formInited = new EventEmitter<FormGroup>();
   @Output() formSubmit = new EventEmitter();
 
-  private rows: number[];
-  private columns: number[];
+  layoutConstruction: Array<Array<LayoutItem>> = [];
 
   constructor(private _dfService: DynamicFormService, public context: DFRuntimeContextService) { }
 
   ngOnInit() {
     if (this.formConfig && this.validateFormConfig()) {
-      this.rows = this.getArrayFromNum(Math.ceil((this.formConfig.fields.length) / (this.formConfig.columns)), 0);
-      this.columns = this.getArrayFromNum(this.formConfig.columns, 0);
+
+      this.constructLayout();
 
       this.formConfig.fields.forEach(eachField => {
         if (this.initialModel) {
@@ -39,21 +43,30 @@ export class DynamicFormComponent implements OnInit {
       this.formInited.emit(this.formGroup);
     }
   }
-
-  private getArrayFromNum(num: number, start: number): number[] {
-    const ret = [];
-    for (let i = 0; i < num; i++) {
-      ret.push(i + start);
-    }
-    return ret;
+  private constructLayout() {
+    this.formConfig.fields.forEach(eachF => {
+      if (this.layoutConstruction.length === 0) {
+        const innerRow = new Array<LayoutItem>();
+        innerRow.push({ f: eachF, span: eachF.span });
+        this.layoutConstruction.push(innerRow);
+      } else if (this.layoutConstruction.length > 0) {
+        const lastRow = this.layoutConstruction[this.layoutConstruction.length - 1];
+        let lastRowHaveSpan = 0;
+        lastRow.forEach(eachlf => lastRowHaveSpan += eachlf.span);
+        lastRowHaveSpan += eachF.span;
+        if (lastRowHaveSpan > this.formConfig.columns) {
+          const innerRow = new Array<LayoutItem>();
+          innerRow.push({ f: eachF, span: eachF.span });
+          this.layoutConstruction.push(innerRow);
+        } else {
+           lastRow.push({ f: eachF, span: eachF.span });
+        }
+      }
+    });
   }
 
   onSubmit() {
     this.formSubmit.emit();
-  }
-
-  private getRealIndex(rowidx, colidx) {
-    return rowidx * this.formConfig.columns + colidx;
   }
 
   private validateFormConfig() {
@@ -90,6 +103,12 @@ export class DynamicFormComponent implements OnInit {
 
     if (existDuplicated) {
       console.error('duplicated key in form config!!');
+      return false;
+    }
+
+    const existExceedSpan = this.formConfig.fields.some(x => x.span > this.formConfig.columns);
+    if (existExceedSpan) {
+      console.error('row span exceed!!');
       return false;
     }
 
