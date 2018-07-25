@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { FieldItem, dfControlType } from '../models/dynamic-form.model';
-import { CustomValidators } from '../../../common/CustomValidators';
+import { CustomValidators } from './CustomValidators';
 
 @Injectable()
 export class DynamicFormService {
