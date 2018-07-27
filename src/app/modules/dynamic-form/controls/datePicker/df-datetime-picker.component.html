@@ -1,7 +1,10 @@
 <nz-form-item style="margin-bottom: 0;">
     <nz-form-label nz-col [nzSpan]="6/model.span" [nzFor]="model.key">{{model.label}}</nz-form-label>
     <nz-form-control nz-col [nzSpan]="(24-6/model.span)">
-        <nz-range-picker  [formControl]="control" nzShowTime></nz-range-picker>
+        <ng-container [ngSwitch]="model.mode">
+            <nz-range-picker *ngSwitchCase="'range'" [formControl]="control" [nzShowTime]="model.showTime"></nz-range-picker>
+            <nz-date-picker *ngSwitchDefault [formControl]="control" [nzShowTime]="model.showTime"></nz-date-picker>
+        </ng-container>
         <nz-form-explain>
             <app-dynamic-validator [control]="control" [targetText]="model.label"></app-dynamic-validator>
         </nz-form-explain>

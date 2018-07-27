@@ -59,9 +59,13 @@ export class TextboxItem extends FieldItem {
 }
 
 export class DatetimePickerItem extends FieldItem {
+    mode?: string;
+    showTime?: boolean;
     constructor(options: DatetimePickerItem) {
         super(options);
         this.controlType = dfControlType.datepicker;
+        this.mode = options.mode || 'date';
+        this.showTime = !!options.showTime;
     }
 }
 

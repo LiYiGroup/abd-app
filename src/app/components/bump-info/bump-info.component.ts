@@ -35,7 +35,8 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
           }, fixedOptions: [{ value: '1', text: 'text1' }, { value: '2', text: 'text2' }, { value: '3', text: 'text3' }]
         }),
         new DatetimePickerItem({
-          key: 'bumpSeal11', label: '流量', placeholder: '流量', span: 2
+          key: 'bumpSeal11', label: '流量', placeholder: '流量', span: 2,
+          validator: { isRequired: true }
         }),
         new TextboxItem({
           key: 'bumpLift', label: '扬程', placeholder: '扬程'
