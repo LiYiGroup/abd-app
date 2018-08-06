@@ -10,7 +10,7 @@ import { DFSpaceComponent } from '../controls/df-space.component';
 import { DFSubmitComponent } from '../controls/df-submit-button.component';
 import { DFSelectboxComponent } from '../controls/selectBox/df-select-box.component';
 import { DFDatetimePickerComponent } from '../controls/datePicker/df-datetime-picker.component';
-
+import { DFCheckboxComponent } from '../controls/checkbox/df-check-box.component';
 @Component({
   selector: 'app-dynamic-form-element',
   template: `<ng-container appControlHost></ng-container>`,
@@ -54,6 +54,7 @@ export class DynamicFormElementComponent implements OnInit {
       case dfControlType.textbox: return DFTextboxComponent;
       case dfControlType.selection: return DFSelectboxComponent;
       case dfControlType.datepicker: return DFDatetimePickerComponent;
+      case dfControlType.checkbox: return DFCheckboxComponent;
       case dfControlType.space: return DFSpaceComponent;
       case dfControlType.submit: return DFSubmitComponent;
       case dfControlType.custom: return (this.everyFeild as CustomItem).component;

@@ -71,15 +71,31 @@ export class DatetimePickerItem extends FieldItem {
 
 export class SelectionBoxItem extends FieldItem {
     mode?: string;
-    fixedOptions?: { value: string, text: string }[];
+    fixedOptions?: SelectionItem[];
     remoteUrl?: string;
 
     constructor(options: SelectionBoxItem) {
         super(options);
         this.controlType = dfControlType.selection;
         this.mode = options.mode || 'default';
-        this.fixedOptions = options.fixedOptions;
+        this.fixedOptions = options.fixedOptions || [];
         this.remoteUrl = options.remoteUrl;
+    }
+}
+
+export class CheckBoxItem extends FieldItem {
+    mode?: string;
+    fixedOptions?: SelectionItem[];
+    constructor(options: CheckBoxItem) {
+        super(options);
+        this.controlType = dfControlType.checkbox;
+        this.mode = options.mode || 'default';
+        this.fixedOptions = options.fixedOptions || [];
+    }
+}
+
+export class SelectionItem {
+    constructor(public value: string, public text: string) {
     }
 }
 
@@ -108,6 +124,7 @@ export const dfControlType = {
     textbox: 'textbox',
     selection: 'selection',
     datepicker: 'datepicker',
+    checkbox: 'checkbox',
     space: 'space',
     submit: 'submit',
     custom: 'custom'

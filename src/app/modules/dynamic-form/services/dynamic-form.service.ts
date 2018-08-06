@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ValidatorFn, FormArray } from '@angular/forms';
 import { FieldItem, dfControlType } from '../models/dynamic-form.model';
 import { CustomValidators } from './CustomValidators';
 
@@ -8,12 +8,10 @@ export class DynamicFormService {
     toFormGroup(items: FieldItem[]): FormGroup {
         const group: any = {};
         items.forEach(item => {
-            if (item.controlType === dfControlType.space) {
-
-            } else if (item.controlType === dfControlType.submit) {
-
+            if (item.controlType === dfControlType.space ||
+                item.controlType === dfControlType.submit) {
             } else {
-                const ta = new FormControl(item.value);
+                const ta = this.CreateFormControl(item);
                 const validateFuns: ValidatorFn[] = [];
 
                 if (item.validator) {
@@ -45,5 +43,8 @@ export class DynamicFormService {
             }
         });
         return new FormGroup(group);
+    }
+    private CreateFormControl(item: FieldItem): FormControl | FormArray {
+        return new FormControl(item.value);
     }
 }

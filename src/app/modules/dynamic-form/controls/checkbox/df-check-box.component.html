@@ -1,0 +1,16 @@
+<nz-form-item style="margin-bottom: 0;">
+    <nz-form-label nz-col [nzSpan]="6/model.span" [nzFor]="model.key">{{model.label}}</nz-form-label>
+    <nz-form-control nz-col [nzSpan]="(24-6/model.span)">
+        <label *ngIf="model.mode==='default'" nz-checkbox [formControl]="control"></label>
+        <nz-checkbox-wrapper *ngIf="model.mode==='list'" style="width: 100%;" (nzOnChange)="onMultipleChange($event)">
+            <div nz-row>
+                <div *ngFor="let eachCheckbox of model.fixedOptions" nz-col nzSpan="8">
+                    <label nz-checkbox [nzValue]="eachCheckbox.value" [ngModel]="getValue(eachCheckbox.value)">{{eachCheckbox.text}}</label>
+                </div>
+            </div>
+        </nz-checkbox-wrapper>
+        <nz-form-explain>
+            <app-dynamic-validator [control]="control" [targetText]="model.label"></app-dynamic-validator>
+        </nz-form-explain>
+    </nz-form-control>
+</nz-form-item>

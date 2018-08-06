@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import {
   FormConfig, TextboxItem,
-  SelectionBoxItem, WhiteSpaceItem,
+  SelectionBoxItem, CheckBoxItem,
   SubmitItem, CustomItem, DatetimePickerItem
 } from '../../modules/dynamic-form/models/dynamic-form.model';
 import { DynamicFormComponent } from '../../modules/dynamic-form/dynamic-form/dynamic-form.component';
@@ -30,16 +30,18 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
           }
         }),
         new SelectionBoxItem({
-          key: 'bumpType', label: '型号', placeholder: '型号', validator: {
+          key: 'bumpType', label: '型号', placeholder: '型号', mode: 'multiple', validator: {
             isRequired: true
           }, fixedOptions: [{ value: '1', text: 'text1' }, { value: '2', text: 'text2' }, { value: '3', text: 'text3' }]
         }),
         new DatetimePickerItem({
-          key: 'bumpSeal11', label: '流量', placeholder: '流量', span: 2,
+          key: 'bumpSeal11', label: '流量', placeholder: '流量', span: 2, value: new Date(),
           validator: { isRequired: true }
         }),
-        new TextboxItem({
-          key: 'bumpLift', label: '扬程', placeholder: '扬程'
+        new CheckBoxItem({
+          key: 'bumpLift', label: '扬程', placeholder: '扬程', value: true,
+          fixedOptions: [{ value: '1', text: 'text1' }, { value: '2', text: 'text2' }, { value: '3', text: 'text3' },
+          { value: '4', text: 'text4' }, { value: '5', text: 'text5' }, { value: '6', text: 'text6' }]
         }),
         new TextboxItem({
           key: 'bumpMaterial', label: '材质', placeholder: '材质',
@@ -61,7 +63,8 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
   };
 
   initModel = {
-    bumpName: 'xxxxxxxxxxxxxxxx'
+    bumpName: 'xxxxxxxxxxxxxxxx',
+    bumpType: ['1', '2']
   };
 
   isWorking = false;

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { DynamicFormElementComponent } from './dynamic-form-element/dynamic-form-element.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { DynamicFormService } from './services/dynamic-form.service';
 import { DFTextboxComponent } from './controls/textbox/df-textbox.component';
@@ -13,11 +13,13 @@ import { DFSpaceComponent } from './controls/df-space.component';
 import { DFSubmitComponent } from './controls/df-submit-button.component';
 import { DynamicValidatorComponent } from './dynamic-validator/dynamic-validator.component';
 import { DFDatetimePickerComponent } from './controls/datePicker/df-datetime-picker.component';
+import { DFCheckboxComponent } from './controls/checkbox/df-check-box.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     NgZorroAntdModule
   ],
   declarations:
@@ -31,7 +33,8 @@ import { DFDatetimePickerComponent } from './controls/datePicker/df-datetime-pic
       DFSubmitComponent,
       DynamicValidatorComponent,
       DFSelectboxComponent,
-      DFDatetimePickerComponent
+      DFDatetimePickerComponent,
+      DFCheckboxComponent
     ],
   exports: [DynamicFormComponent],
   providers: [DynamicFormService],
@@ -42,7 +45,8 @@ import { DFDatetimePickerComponent } from './controls/datePicker/df-datetime-pic
       DFSubmitComponent,
       DFSpaceComponent,
       DFSelectboxComponent,
-      DFDatetimePickerComponent
+      DFDatetimePickerComponent,
+      DFCheckboxComponent
     ]
 })
 export class DynamicFormModule { }
