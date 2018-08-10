@@ -24,16 +24,8 @@ export class DFCheckboxComponent extends BaseControl implements OnInit, IControl
     return null;
   }
 
-  getValue(key) {
-    if (this.model.value && this.model.value.some(x => x === key)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   onMultipleChange(values: any) {
     const fc = (this.control as FormControl);
-    fc.setValue(values, { emitEvent: true });
+    fc.setValue(values);
   }
 }

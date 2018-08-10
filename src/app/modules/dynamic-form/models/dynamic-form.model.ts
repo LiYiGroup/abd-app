@@ -95,7 +95,7 @@ export class CheckBoxItem extends FieldItem {
 }
 
 export class SelectionItem {
-    constructor(public value: string, public text: string) {
+    constructor(public value: string, public text: string, public isSelected?: boolean) {
     }
 }
 

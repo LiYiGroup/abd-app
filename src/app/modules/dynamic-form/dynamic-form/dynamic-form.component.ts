@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormConfig, FieldItem } from '../models/dynamic-form.model';
+import { FormConfig, FieldItem, dfControlType, CheckBoxItem } from '../models/dynamic-form.model';
 import { FormGroup } from '@angular/forms';
 import { DynamicFormService } from '../services/dynamic-form.service';
 import { DFRuntimeContextService } from '../services/df-runtime-context.service';
@@ -30,19 +30,17 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     if (this.formConfig && this.validateFormConfig()) {
-
       this.constructLayout();
-
-      this.formConfig.fields.forEach(eachField => {
-        if (this.initialModel) {
-          eachField.value = this.initialModel[eachField.key] || eachField.value;
-        }
-      });
-
+      this.initialFieldsValue();
       this.formGroup = this._dfService.toFormGroup(this.formConfig.fields);
       this.formInited.emit(this.formGroup);
     }
   }
+
+  onSubmit() {
+    this.formSubmit.emit();
+  }
+
   private constructLayout() {
     this.formConfig.fields.forEach(eachF => {
       if (this.layoutConstruction.length === 0) {
@@ -59,14 +57,29 @@ export class DynamicFormComponent implements OnInit {
           innerRow.push({ f: eachF, span: eachF.span });
           this.layoutConstruction.push(innerRow);
         } else {
-           lastRow.push({ f: eachF, span: eachF.span });
+          lastRow.push({ f: eachF, span: eachF.span });
         }
       }
     });
   }
 
-  onSubmit() {
-    this.formSubmit.emit();
+  private initialFieldsValue() {
+    this.formConfig.fields.forEach(eachField => {
+      if (this.initialModel) {
+        eachField.value = this.initialModel[eachField.key] || eachField.value;
+      }
+      if (eachField.controlType === dfControlType.checkbox) {
+        const checkboxF = eachField as CheckBoxItem;
+        if (checkboxF) {
+          checkboxF.fixedOptions.forEach(fo => {
+            fo.isSelected = false;
+            if (checkboxF.value && checkboxF.value.length) {
+              fo.isSelected = checkboxF.value.some(ev => ev === fo.value);
+            }
+          });
+        }
+      }
+    });
   }
 
   private validateFormConfig() {

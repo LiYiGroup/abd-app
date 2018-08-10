@@ -31,7 +31,7 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
         }),
         new SelectionBoxItem({
           key: 'bumpType', label: '型号', placeholder: '型号', mode: 'multiple', validator: {
-            isRequired: true
+            isRequired: true,
           }, fixedOptions: [{ value: '1', text: 'text1' }, { value: '2', text: 'text2' }, { value: '3', text: 'text3' }]
         }),
         new DatetimePickerItem({
@@ -39,7 +39,7 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
           validator: { isRequired: true }
         }),
         new CheckBoxItem({
-          key: 'bumpLift', label: '扬程', placeholder: '扬程', value: true,
+          key: 'bumpLift', label: '扬程', placeholder: '扬程', mode: 'list',
           fixedOptions: [{ value: '1', text: 'text1' }, { value: '2', text: 'text2' }, { value: '3', text: 'text3' },
           { value: '4', text: 'text4' }, { value: '5', text: 'text5' }, { value: '6', text: 'text6' }]
         }),
@@ -64,7 +64,8 @@ export class BumpInfoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   initModel = {
     bumpName: 'xxxxxxxxxxxxxxxx',
-    bumpType: ['1', '2']
+    bumpType: ['1', '2'],
+    bumpLift: ['4', '2']
   };
 
   isWorking = false;

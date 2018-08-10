@@ -5,7 +5,7 @@
         <nz-checkbox-wrapper *ngIf="model.mode==='list'" style="width: 100%;" (nzOnChange)="onMultipleChange($event)">
             <div nz-row>
                 <div *ngFor="let eachCheckbox of model.fixedOptions" nz-col nzSpan="8">
-                    <label nz-checkbox [nzValue]="eachCheckbox.value" [ngModel]="getValue(eachCheckbox.value)">{{eachCheckbox.text}}</label>
+                    <label nz-checkbox [nzValue]="eachCheckbox.value" [ngModel]="eachCheckbox.isSelected">{{eachCheckbox.text}}</label>
                 </div>
             </div>
         </nz-checkbox-wrapper>
