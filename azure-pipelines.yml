@@ -22,9 +22,11 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: '\dist\abd-app\**\*'
+    Contents: |
+      dist/abd-app/index.html
+      favicon.ico
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copying dist folder'
+    displayName: 'Copying dist folder'
 
 - task: PublishBuildArtifacts@1
   inputs:
