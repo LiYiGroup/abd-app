@@ -21,8 +21,8 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/dist/abd-app'
-    Contents: '**\*'
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '\dist\abd-app\**\*'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copying dist folder'
 
