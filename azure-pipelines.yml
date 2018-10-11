@@ -22,7 +22,7 @@ steps:
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
-    dist
+    /dist
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copying dist folder'
 
