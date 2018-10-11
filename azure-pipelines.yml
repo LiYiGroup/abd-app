@@ -23,7 +23,7 @@ steps:
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)/dist/abd-app/'
     Contents: |
-       '*'
+       *
        assets\*
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     displayName: 'Copying dist folder'
